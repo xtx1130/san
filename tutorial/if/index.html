@@ -14,7 +14,7 @@
 <meta property="og:url" content="http://ecomfe.github.io/tutorial/if/index.html">
 <meta property="og:site_name" content="San">
 <meta property="og:description" content="s-if通过 s-if 指令，我们可以为元素指定条件。当条件成立时元素可见，当条件不成立时元素不存在。 提示：当不满足条件时，San 会将元素从当前页面中移除，而不是隐藏。 1&amp;lt;span s-if=&quot;isOK&quot;&amp;gt;Hello San!&amp;lt;/span&amp;gt; s-if 指令的值可以是任何类型的表达式。 1&amp;lt;span s-if=&quot;isReady &amp;amp;&amp;amp; isActiv">
-<meta property="og:updated_time" content="2018-03-22T06:33:28.000Z">
+<meta property="og:updated_time" content="2018-05-01T06:30:59.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="条件">
 <meta name="twitter:description" content="s-if通过 s-if 指令，我们可以为元素指定条件。当条件成立时元素可见，当条件不成立时元素不存在。 提示：当不满足条件时，San 会将元素从当前页面中移除，而不是隐藏。 1&amp;lt;span s-if=&quot;isOK&quot;&amp;gt;Hello San!&amp;lt;/span&amp;gt; s-if 指令的值可以是任何类型的表达式。 1&amp;lt;span s-if=&quot;isReady &amp;amp;&amp;amp; isActiv">
@@ -169,6 +169,9 @@ var _hmt = _hmt || [];
 <p><strong>s-elif</strong> 指令可以给 <strong>s-if</strong> 增加一个额外条件分支块。<strong>s-elif</strong> 指令的值可以是任何类型的<a href="../data-binding/#表达式">表达式</a>。</p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">span</span> <span class="attr">s-if</span>=<span class="string">"isActive"</span>&gt;</span>Active<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">span</span> <span class="attr">s-elif</span>=<span class="string">"isOnline"</span>&gt;</span>Pending<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <p><code>提示</code>：<strong>s-elif</strong> 指令元素必须跟在 <strong>s-if</strong> 或 <strong>s-elif</strong> 指令元素后，否则将抛出 <strong>elif not match if</strong> 的异常。</p>
+<h2 id="s-elif-1"><a href="#s-elif-1" class="headerlink" title="s-elif"></a>s-elif</h2><p><code>&gt; 3.5.6</code></p>
+<p><strong>s-else-if</strong> 指令是 <strong>s-elif</strong> 指令的别名，效果相同。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">span</span> <span class="attr">s-if</span>=<span class="string">"isActive"</span>&gt;</span>Active<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">span</span> <span class="attr">s-else-if</span>=<span class="string">"isOnline"</span>&gt;</span>Pending<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <h2 id="s-else"><a href="#s-else" class="headerlink" title="s-else"></a>s-else</h2><p><strong>s-else</strong> 指令可以给 <strong>s-if</strong> 增加一个不满足条件的分支块。<strong>s-else</strong> 指令没有值。</p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">span</span> <span class="attr">s-if</span>=<span class="string">"isOnline"</span>&gt;</span>Hello!<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">span</span> <span class="attr">s-else</span>&gt;</span>Offline<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <p><code>提示</code>：<strong>s-else</strong> 指令元素必须跟在 <strong>s-if</strong> 或 <strong>s-elif</strong> 指令元素后，否则将抛出 <strong>else not match if</strong> 的异常。</p>
@@ -181,7 +184,7 @@ var _hmt = _hmt || [];
 </article>
 
 <aside class="toc-wrap">
-  <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#s-if"><span class="toc-text">s-if</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#s-elif"><span class="toc-text">s-elif</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#s-else"><span class="toc-text">s-else</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#虚拟元素"><span class="toc-text">虚拟元素</span></a></li></ol>
+  <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#s-if"><span class="toc-text">s-if</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#s-elif"><span class="toc-text">s-elif</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#s-elif-1"><span class="toc-text">s-elif</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#s-else"><span class="toc-text">s-else</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#虚拟元素"><span class="toc-text">虚拟元素</span></a></li></ol>
   <a href="#" class="toc-top">
     回到顶部
   </a>
