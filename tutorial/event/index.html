@@ -14,7 +14,7 @@
 <meta property="og:url" content="http://ecomfe.github.io/tutorial/event/index.html">
 <meta property="og:site_name" content="San">
 <meta property="og:description" content="事件是开发中最常用的行为管理方式。通过 on- 前缀，可以将事件的处理绑定到组件的方法上。 提示：在 San 中，无论是 DOM 事件还是组件的自定义事件，都通过 on- 前缀绑定，没有语法区分。 DOM 事件on- + 事件名 将 DOM 元素的事件绑定到组件方法上。当 DOM 事件触发时，组件方法将被调用，this 指向组件实例。下面的例子中，当按钮被点击时，组件的 submit 方法被调用。">
-<meta property="og:updated_time" content="2018-03-22T06:33:28.000Z">
+<meta property="og:updated_time" content="2018-05-08T05:17:43.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="事件处理">
 <meta name="twitter:description" content="事件是开发中最常用的行为管理方式。通过 on- 前缀，可以将事件的处理绑定到组件的方法上。 提示：在 San 中，无论是 DOM 事件还是组件的自定义事件，都通过 on- 前缀绑定，没有语法区分。 DOM 事件on- + 事件名 将 DOM 元素的事件绑定到组件方法上。当 DOM 事件触发时，组件方法将被调用，this 指向组件实例。下面的例子中，当按钮被点击时，组件的 submit 方法被调用。">
@@ -106,7 +106,7 @@ var _hmt = _hmt || [];
         <dd><a href="/san/tutorial/setup/">安装</a></dd>
         <dd><a href="/san/tutorial/background/">背景</a></dd>
         <dd><a href="/san/tutorial/start/">开始</a></dd>
-        <dd><a href="/san/tutorial/data-binding/">数据绑定</a></dd>
+        <dd><a href="/san/tutorial/template/">模板</a></dd>
         <dd><a href="/san/tutorial/data-method/">数据操作</a></dd>
         <dd><a href="/san/tutorial/data-checking/">数据校验</a></dd>
         <dd><a href="/san/tutorial/style/">样式</a></dd>
@@ -163,7 +163,7 @@ var _hmt = _hmt || [];
 <p><code>提示</code>：在 San 中，无论是 DOM 事件还是组件的自定义事件，都通过 <strong>on-</strong> 前缀绑定，没有语法区分。</p>
 <h2 id="DOM-事件"><a href="#DOM-事件" class="headerlink" title="DOM 事件"></a>DOM 事件</h2><p><strong>on- + 事件名</strong> 将 DOM 元素的事件绑定到组件方法上。当 DOM 事件触发时，组件方法将被调用，this 指向组件实例。下面的例子中，当按钮被点击时，组件的 submit 方法被调用。</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">san.defineComponent(&#123;</span><br><span class="line">    template: <span class="string">'...&lt;button type="button" on-click="submit"&gt;submit&lt;/button&gt;'</span>,</span><br><span class="line"></span><br><span class="line">    submit: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">var</span> title = <span class="keyword">this</span>.data.get(<span class="string">'title'</span>);</span><br><span class="line">        <span class="keyword">if</span> (!title) &#123;</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        sendData(&#123;<span class="attr">title</span>: title&#125;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-<p>绑定事件时，可以指定参数，引用当前渲染环境中的数据。参数可以是任何类型的<a href="../data-binding/#表达式">表达式</a>。</p>
+<p>绑定事件时，可以指定参数，引用当前渲染环境中的数据。参数可以是任何类型的<a href="../template/#表达式">表达式</a>。</p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- Template --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">ul</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">li</span> <span class="attr">s-for</span>=<span class="string">"item, index in todos"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">h3</span>&gt;</span>&#123;&#123; item.title &#125;&#125;<span class="tag">&lt;/<span class="name">h3</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">p</span>&gt;</span>&#123;&#123; item.desc &#125;&#125;<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">i</span> <span class="attr">class</span>=<span class="string">"fa fa-trash-o"</span> <span class="attr">on-click</span>=<span class="string">"rmTodo(item)"</span>&gt;</span><span class="tag">&lt;/<span class="name">i</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Component</span></span><br><span class="line">san.defineComponent(&#123;</span><br><span class="line">    rmTodo: <span class="function"><span class="keyword">function</span> (<span class="params">todo</span>) </span>&#123;</span><br><span class="line">        service.rmTodo(todo.id);</span><br><span class="line">        <span class="keyword">this</span>.data.remove(<span class="string">'todos'</span>, todo);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
 <p>指定参数时，<strong>$event</strong> 是 San 保留的一个特殊变量，指定 $event 将引用到 DOM Event 对象。从而你可以拿到事件触发的 DOM 对象、鼠标事件的鼠标位置等事件信息。</p>
@@ -216,7 +216,7 @@ var _hmt = _hmt || [];
         <dd><a href="/san/tutorial/setup/">安装</a></dd>
         <dd><a href="/san/tutorial/background/">背景</a></dd>
         <dd><a href="/san/tutorial/start/">开始</a></dd>
-        <dd><a href="/san/tutorial/data-binding/">数据绑定</a></dd>
+        <dd><a href="/san/tutorial/template/">模板</a></dd>
         <dd><a href="/san/tutorial/data-method/">数据操作</a></dd>
         <dd><a href="/san/tutorial/data-checking/">数据校验</a></dd>
         <dd><a href="/san/tutorial/style/">样式</a></dd>
