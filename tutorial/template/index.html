@@ -14,7 +14,7 @@
 <meta property="og:url" content="http://ecomfe.github.io/tutorial/template/index.html">
 <meta property="og:site_name" content="San">
 <meta property="og:description" content="在模板 HTML 中，我们通过一定的数据绑定语法编写，相应的数据就能在视图上呈现。 场景插值和许多模板引擎一样，插值的语法形式是表达式位于双大括号中，表达式后可以接任意多个过滤器。 1&amp;#123;&amp;#123; expr [[| filter-call1] | filter-call2...] &amp;#125;&amp;#125; 在文本内容区域我们可以使用插值替换。 1&amp;lt;p&amp;gt;Hello &amp;#123">
-<meta property="og:updated_time" content="2018-05-08T05:19:09.000Z">
+<meta property="og:updated_time" content="2018-05-08T15:47:50.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="模板">
 <meta name="twitter:description" content="在模板 HTML 中，我们通过一定的数据绑定语法编写，相应的数据就能在视图上呈现。 场景插值和许多模板引擎一样，插值的语法形式是表达式位于双大括号中，表达式后可以接任意多个过滤器。 1&amp;#123;&amp;#123; expr [[| filter-call1] | filter-call2...] &amp;#125;&amp;#125; 在文本内容区域我们可以使用插值替换。 1&amp;lt;p&amp;gt;Hello &amp;#123">
@@ -195,6 +195,24 @@ var _hmt = _hmt || [];
 <p>filter支持参数传递，参数可以是任何支持的<a href="#表达式">表达式</a>。</p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- // 假设存在过滤器: comma --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span>&#123;&#123;myVariable | comma(3)&#125;&#125;<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span>&#123;&#123;myVariable | comma(commaLength)&#125;&#125;<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span>&#123;&#123;myVariable | comma(commaLength + 1)&#125;&#125;<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <p>过滤器在组件声明时注册，具体请参考组件文档。</p>
+<h2 id="字符实体"><a href="#字符实体" class="headerlink" title="字符实体"></a>字符实体</h2><p>在我们编写 HTML 时，如果内容中包含 HTML 预留字符或特殊字符，我们需要写字符实体。San 的模板 HTML 是自解析的，由于体积的关系，只支持有限的具名字符实体：</p>
+<ul>
+<li>&amp;lt;</li>
+<li>&amp;gt;</li>
+<li>&amp;nbsp;</li>
+<li>&amp;quot;</li>
+<li>&amp;emsp;</li>
+<li>&amp;ensp;</li>
+<li>&amp;thinsp;</li>
+<li>&amp;copy;</li>
+<li>&amp;reg;</li>
+<li>&amp;zwnj;</li>
+<li>&amp;zwj;</li>
+<li>&amp;amp;</li>
+</ul>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span>LiLei &amp;amp; HanMeiMei are a couple.<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span>1 + 1 &amp;lt; 3<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>除此之外，我们可以使用 <code>&amp;#[entity_number];</code> 或 <code>&amp;#x[entity_number];</code> 形式的编号字符实体。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span>LiLei &amp;#38; HanMeiMei are a couple.<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span>1 + 1 &amp;#60; 3<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -202,7 +220,7 @@ var _hmt = _hmt || [];
 </article>
 
 <aside class="toc-wrap">
-  <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#场景"><span class="toc-text">场景</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#插值"><span class="toc-text">插值</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#属性绑定"><span class="toc-text">属性绑定</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#双向绑定"><span class="toc-text">双向绑定</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#输出HTML"><span class="toc-text">输出HTML</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#表达式"><span class="toc-text">表达式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#过滤器"><span class="toc-text">过滤器</span></a></li></ol>
+  <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#场景"><span class="toc-text">场景</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#插值"><span class="toc-text">插值</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#属性绑定"><span class="toc-text">属性绑定</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#双向绑定"><span class="toc-text">双向绑定</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#输出HTML"><span class="toc-text">输出HTML</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#表达式"><span class="toc-text">表达式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#过滤器"><span class="toc-text">过滤器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#字符实体"><span class="toc-text">字符实体</span></a></li></ol>
   <a href="#" class="toc-top">
     回到顶部
   </a>
