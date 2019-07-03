@@ -7,7 +7,9 @@ module.exports = function(config) {
     // base path that will be used to resolve all patterns (eg. files, exclude)
     basePath: '..',
     browserDisconnectTimeout: 10000,
+
     browserDisconnectTolerance: 3,
+    
     browserNoActivityTimeout: 60000,
 
     customContextFile: 'test/karma-context.html',
@@ -66,7 +68,11 @@ module.exports = function(config) {
     customLaunchers: {
         Chrome_travis_ci: {
             base: 'ChromeHeadless',
-            flags: ['--no-sandbox']
+            flags: [
+              '--disable-web-security',
+              '--disable-gpu',
+              '--no-sandbox'
+            ]
         }
     },
 
